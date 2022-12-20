@@ -1,23 +1,28 @@
 // Copyright (c) 2022 Andre Deveau All rights reserved
 //
 // Created by: Andre Deveau
-// Created on: Oct 2022
+// Created on: Dec 2022
 // This file contains the JS functions for index.html
 
 "use strict"
 
 /**
- * Check servie worker.
+ * Check service worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Template/sw.js", {
-    scope: "/ICS2O-PWA-Template/",
+  navigator.serviceWorker.register("/ICS2O-Unit6-04/sw.js", {
+    scope: "/ICS2O-Unit6-04/",
   })
 }
 
-/**
- * This function displays an alert.
- */
-function myButtonClicked() {
-  document.getElementById("hello-world").innerHTML = "<p>Hello, World!</p>"
+function start() {
+  const params = new URLSearchParams(document.location.search)
+  const radius = params.get("r")
+
+  document.getElementById("radius").innerHTML =
+    "The radius is: " + radius + " cm."
+
+  const volume = (4.0 * Math.PI * radius ** 3) / 3.0
+  document.getElementById("volume-of-sphere").innerHTML =
+    "The volume of the sphere is: " + volume.toFixed(2) + " cm³."
 }
